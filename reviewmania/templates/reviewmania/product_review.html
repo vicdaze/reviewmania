@@ -1,0 +1,22 @@
+{% extends "reviewmania/base.html" %}
+
+{% block content %}
+    <h1>Отзыв</h1>
+    <form id="form-container" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{score_formset.management_form}}
+        {% for form in score_formset %}
+        <div class="score-form">
+            <label>{{form.criteria_name.value}}</label> 
+            {{form.criteria}}
+            {% comment %} <input type="hidden" name="form-{{ forloop.counter0 }}-criteria" value="{{ form.criteria.id }}"> {% endcomment %}
+            <input type="range" name="form-{{ forloop.counter0 }}-value" min="1" max="10">
+        </div>
+        {% endfor %}
+        <textarea name="text" cols=100 rows=10></textarea>
+        <input type="file" name="photo" multiple>
+        <div>
+            <button type="submit">Send</button>
+        </div>
+    </form>
+{% endblock content %}

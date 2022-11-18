@@ -1,0 +1,19 @@
+{% extends "reviewmania/base.html" %}
+
+{% block content %}
+    {% for category in categories.all %}
+        <section>    
+            <h1>{{category.name}}</h1>
+            <ul>
+                {% for product in category.sorted_product_set %}
+                    <li>
+                        <a href="{% url 'product_detail' product.pk %}">{{product.title}}</a>
+                        {% if product.average_rating %}
+                            <span>{{product.average_rating}}</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends "reviewmania/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>{{ object.title }}</h1>
+    <section>
+        {% if object.main_photo %}
+            <img src="{{ object.main_photo.url }}">
+        {% endif %}
+        <p>{{ object.category }}</p>
+        {{ object.description }}
+        <div>{{ object.average_rating}}</div>
+        <a href="{% url 'product_review' product.pk %}" class="btn btn-primary">Add Review</a>
+    </section>
+    <div> 
+        <h1>Reviews</h1>
+        {% for review in object.review_set.all %}
+            <div class="review">
+                <b>{{ review.user }}</b>
+                <p>{{ review.text }}</p>
+                <div class="avg-rating"> 
+                    <div class="avg-rating-value" style="width: {% widthratio review.average_rating 10 100 %}%"></div>
+                </div>
+                {% for score in review.score_set.all %}
+                    <div class="score-criteria">
+                        {{ score.criteria }}
+                    </div>
+                    <div class="score-rating">
+                        <div class="score-rating-value" style="width: {% widthratio score.value 10 100 %}%"></div>
+                    </div>
+                {% endfor %}
+                <div class="review-photos">
+                    {% for photo in review.photo_set.all %}
+                        <img src="{{ photo.image.url }}" alt="Фотография">
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

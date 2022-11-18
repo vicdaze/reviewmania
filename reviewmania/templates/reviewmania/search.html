@@ -1,0 +1,7 @@
+{% extends "reviewmania/base.html" %}
+
+{% block content%}
+    {%for product in results%}
+        <a href="{% url 'product_detail' product.pk %}"> {{ product.title }}</a>
+    {% endfor %}
+{%endblock content%}
