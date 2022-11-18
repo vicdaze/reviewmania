@@ -36,9 +36,6 @@ def logout_user(request):
 
 
 def index(request):
-    # User = get_user_model()
-    # users = User.objects.all()
-    # context = {"users" : users}
     categories = Category.objects.annotate(products_count=Count("product")).order_by("-products_count").exclude(products_count=0)
     context = {"categories" : categories}
     return render(request, "index.html", context)
@@ -55,17 +52,6 @@ def search(request):
 class ProductDetailView(DetailView):
     model = Product
     
-# class ReviewFormView(FormView):
-#     template_name = 'product_review'
-#     form_class = ReviewCreateForm
-#     success_url = reverse_lazy('product_detail')
-#     def form_valid(self, form):
-#         review = form['review'].save(commit=False)
-#         review.user = self.request.user
-#         review.product = Product.objects.get(pk=self.kwargs['pk'])
-#         review.text = form.cleaned_data['review']['text']
-#         review.save()
-#         score = form['score'].save(commit=False)
 
 class ReviewCreateView(TemplateView):
     template_name = 'reviewmania/product_review.html'
