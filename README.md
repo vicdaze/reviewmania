@@ -13,20 +13,20 @@ Reviewmania is the project to show what I can do as a Junior Full-Stack Develope
 <li> Pillow 9.3</li>
 </ul>
 
-# Installation
+## Installation
 
-[git clone https://github.com/vicdaze/reviewmania.git]
+<pre><code>git clone https://github.com/vicdaze/reviewmania.git</pre></code>
 
 ## Creating Virtual Environment
-[py -m venv reviewmania/.venv]
+<pre><code>py -m venv reviewmania/.venv</pre></code>
 
 ## Install Django
-[py -m pip install Django]
+<pre><code>py -m pip install Django</pre></code>
 
 
 ## Install required packages
-[pip install -r requirements.txt]
+<pre><code>pip install -r requirements.txt</pre></code>
 
 ## Create user
 
-[py manage.py createsuperuser]
+<pre><code>py manage.py createsuperuser</pre></code>
