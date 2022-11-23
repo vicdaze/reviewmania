@@ -14,11 +14,13 @@ Reviewmania is the project to show what I can do as a Junior Full-Stack Develope
 </ul>
 
 ## Installation
-
 <pre><code>git clone https://github.com/vicdaze/reviewmania.git</pre></code>
 
 ## Creating Virtual Environment
-<pre><code>py -m venv reviewmania/.venv</pre></code>
+<pre><code>py -m venv reviewmania/venv</pre></code>
+
+## Activate Virtual Environment
+<pre><code>venv\Scripts\Activate.ps1</pre></code>
 
 ## Install Django
 <pre><code>py -m pip install Django</pre></code>
@@ -27,6 +29,8 @@ Reviewmania is the project to show what I can do as a Junior Full-Stack Develope
 ## Install required packages
 <pre><code>pip install -r requirements.txt</pre></code>
 
-## Create user
+## Make migration
+<pre><code>py manage.py migrate</pre></code>
 
+## Create superuser
 <pre><code>py manage.py createsuperuser</pre></code>
